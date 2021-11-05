@@ -78,7 +78,7 @@ class LoginView extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 38.0),
                         child: GestureDetector(
                             onTap: () {
-                              model.toSignUp();
+                              model.loginToApp();
                             },
                             child: CustomButton(buttonText: 'Sign-In')),
                       ),
@@ -110,7 +110,7 @@ class LoginView extends StatelessWidget {
                         child: Center(
                           child: GestureDetector(
                             onTap: () {
-                              model.toSignUp();
+                             model.toSignUp();
                             },
                             child: RichText(
                                 text: TextSpan(

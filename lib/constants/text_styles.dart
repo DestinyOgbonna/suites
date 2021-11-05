@@ -16,19 +16,24 @@ class AppTextStyles {
   );
 
   static TextStyle boldBlueText = GoogleFonts.montserrat(
-    fontSize: 25,
-    fontWeight: FontWeight.w800,
+    fontSize: 23,
+    fontWeight: FontWeight.w600,
     color: appPrimaryColor,
   );
-   static TextStyle blackText = GoogleFonts.montserrat(
+  static TextStyle blackText = GoogleFonts.montserrat(
     fontSize: 20,
     fontWeight: FontWeight.w800,
     color: appBlackColor,
   );
-   static TextStyle smallblackText = GoogleFonts.montserrat(
+  static TextStyle smallblackText = GoogleFonts.montserrat(
     fontSize: 17,
     fontWeight: FontWeight.w400,
     color: appBlackColor,
+  );
+  static TextStyle smallgreyText = GoogleFonts.montserrat(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: appGreyColor,
   );
 
   static TextStyle headerText = GoogleFonts.rakkas(

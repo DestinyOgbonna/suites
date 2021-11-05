@@ -10,7 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
-import '../views/buttom_nav/bottom_nav.dart';
+import '../views/bottom_nav/bottom_nav.dart';
 import '../views/getting_started_screen/getting_started.dart';
 import '../views/login/login.dart';
 import '../views/sign_up/sign_up.dart';
