@@ -10,9 +10,9 @@ class BookingsView extends StatelessWidget {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => BookingsViewModel(),
         builder: (context, model, child) {
-          return Scaffold(
+          return const Scaffold(
             body: SafeArea(
-              child: Container(child:const Center(child: Text('This is the Bookings Page'))),
+              child: Center(child: Text('This is the Bookings Page')),
             ),
           );
         });

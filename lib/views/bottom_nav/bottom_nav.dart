@@ -25,7 +25,7 @@ class _BtmNavViewState extends State<BtmNavView> {
       ),
       bottomNavigationBar: FancyBottomNavigation(
         circleColor: appPrimaryColor,
-        inactiveIconColor: appPrimaryColor,
+        inactiveIconColor: darkerBlue,
         onTabChangedListener: (position) {
           setState(() {
             currentPage = position;
@@ -57,7 +57,6 @@ class _BtmNavViewState extends State<BtmNavView> {
         return const FavoritesView();
       case 3:
         return const BookingsView();
-     
 
       default:
         return const Text('Welcome to Suites');

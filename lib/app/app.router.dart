@@ -7,11 +7,13 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
 import '../views/bottom_nav/bottom_nav.dart';
 import '../views/getting_started_screen/getting_started.dart';
+import '../views/hotel_details/hotel_details.dart';
 import '../views/login/login.dart';
 import '../views/sign_up/sign_up.dart';
 import '../views/splash_screen/splash_screen.dart';
@@ -24,6 +26,7 @@ class Routes {
   static const String loginView = '/login-view';
   static const String signUpView = '/sign-up-view';
   static const String btmNavView = '/btm-nav-view';
+  static const String hotelDetailsView = '/hotel-details-view';
   static const all = <String>{
     welcomeScreenView,
     splashScreenView,
@@ -31,6 +34,7 @@ class Routes {
     loginView,
     signUpView,
     btmNavView,
+    hotelDetailsView,
   };
 }
 
@@ -44,6 +48,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.loginView, page: LoginView),
     RouteDef(Routes.signUpView, page: SignUpView),
     RouteDef(Routes.btmNavView, page: BtmNavView),
+    RouteDef(Routes.hotelDetailsView, page: HotelDetailsView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -67,8 +72,11 @@ class StackedRouter extends RouterBase {
       );
     },
     LoginView: (data) {
+      var args = data.getArgs<LoginViewArguments>(
+        orElse: () => LoginViewArguments(),
+      );
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => const LoginView(),
+        builder: (context) => LoginView(key: args.key),
         settings: data,
       );
     },
@@ -84,5 +92,21 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
+    HotelDetailsView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => const HotelDetailsView(),
+        settings: data,
+      );
+    },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// LoginView arguments holder class
+class LoginViewArguments {
+  final Key? key;
+  LoginViewArguments({this.key});
 }

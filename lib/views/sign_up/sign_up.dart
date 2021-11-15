@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'package:suites/constants/appcolors.dart';
-import 'package:suites/constants/custom_textfield.dart';
+import 'package:suites/widgets/custom_textfield.dart';
 import 'package:suites/constants/text_styles.dart';
 import 'package:suites/widgets/custom_button.dart';
 
+import 'sign_up.form.dart';
 import 'sign_up_viewmodel.dart';
 
-class SignUpView extends StatelessWidget {
-  const SignUpView({Key? key}) : super(key: key);
+
+@FormView(
+  fields: [
+    FormTextField(name: 'username'),
+    FormTextField(name: 'email'),
+    FormTextField(name: 'password'),
+    FormTextField(name: 're_enterPassword'),
+  ]
+
+)
+
+class SignUpView extends StatelessWidget  with $SignUpView{
+ SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SignUpViewModel>.reactive(
+      onModelReady:(model)=> listenToFormUpdated(model),
         viewModelBuilder: () => SignUpViewModel(),
         builder: (context, model, child) {
           return Scaffold(
@@ -51,6 +65,7 @@ class SignUpView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: usernameController,
                           hint: 'User name',
                           // label: 'Enter user name',
                           prefixicons: const Icon(Icons.person_outline),
@@ -62,6 +77,7 @@ class SignUpView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: emailController,
                           hint: 'E-mail',
                           // label: 'Enter user name',
                           prefixicons: const Icon(Icons.email_outlined),
@@ -70,6 +86,7 @@ class SignUpView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: passwordController,
                           hint: 'Password',
                           obscure: true,
                           // label: 'Enter user name',
@@ -80,6 +97,7 @@ class SignUpView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: re_enterPasswordController,
                           hint: 'Re-enter Password',
                           obscure: true,
                           // label: 'Enter user name',
@@ -93,7 +111,7 @@ class SignUpView extends StatelessWidget {
                             onTap: () {
                               model.toSignIn(); 
                             },
-                            child: CustomButton(buttonText: 'Sign-Up')),
+                            child: const CustomButton(buttonText: 'Sign-Up')),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 48.0),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:suites/app/app.locator.dart';
+import 'package:suites/constants/appcolors.dart';
 import 'package:suites/views/welcome_screens/welcome_screen.dart';
 
 import 'app/app.router.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        iconTheme: const IconThemeData(color: appPrimaryColor),
+        textSelectionTheme:
+            const TextSelectionThemeData(cursorColor: appPrimaryColor),
       ),
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,

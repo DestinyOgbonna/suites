@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'package:suites/constants/appcolors.dart';
-import 'package:suites/constants/custom_textfield.dart';
+import 'package:suites/widgets/custom_textfield.dart';
 import 'package:suites/constants/text_styles.dart';
 import 'package:suites/views/login/login_viewmodel.dart';
 import 'package:suites/widgets/custom_button.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+import 'login.form.dart';
+
+@FormView(
+  fields: [
+    FormTextField(name: 'email'),
+    FormTextField(name: 'password'),
+  ],
+)
+class LoginView extends StatelessWidget with $LoginView {
+ LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
+        onModelReady: (model) => listenToFormUpdated(model),
         viewModelBuilder: () => LoginViewModel(),
         builder: (context, model, child) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
               body: SafeArea(
             child: Container(
               margin: const EdgeInsets.only(top: 55, left: 15, right: 15),
@@ -50,6 +61,7 @@ class LoginView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: emailController,
                           hint: 'E-mail',
                           // label: 'Enter user name',
                           prefixicons: const Icon(Icons.email_outlined),
@@ -61,6 +73,7 @@ class LoginView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
                         child: CustomTextField(
+                          controller: passwordController,
                           hint: 'Password',
                           // label: 'Enter user name',
                           prefixicons: const Icon(Icons.lock_outline),
@@ -80,7 +93,7 @@ class LoginView extends StatelessWidget {
                             onTap: () {
                               model.loginToApp();
                             },
-                            child: CustomButton(buttonText: 'Sign-In')),
+                            child: const CustomButton(buttonText: 'Sign-In')),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 48.0),
@@ -100,7 +113,12 @@ class LoginView extends StatelessWidget {
                               'images/icons/facebook.png',
                               height: 50,
                             ),
-                            Image.asset('images/icons/google.png', height: 50),
+                            GestureDetector(
+                                onTap: () {
+                                  model.signInWithGoogle();
+                                },
+                                child: Image.asset('images/icons/google.png',
+                                    height: 50)),
                             Image.asset('images/icons/twitter.png', height: 50)
                           ],
                         ),
@@ -110,7 +128,7 @@ class LoginView extends StatelessWidget {
                         child: Center(
                           child: GestureDetector(
                             onTap: () {
-                             model.toSignUp();
+                              model.toSignUp();
                             },
                             child: RichText(
                                 text: TextSpan(

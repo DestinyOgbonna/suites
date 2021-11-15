@@ -21,7 +21,7 @@ class GettingStartedView extends StatelessWidget {
                 children: [
                   Center(
                       child: SvgPicture.asset(
-                    'images/place.svg',
+                    'images/rent.svg',
                   )),
                   Text(
                     'Find the best Deals',
@@ -43,7 +43,7 @@ class GettingStartedView extends StatelessWidget {
                     (){model.toLogin();
                     },
                       
-                        child: CustomButton(
+                        child: const CustomButton(
                           buttonText: 'Get Started',
                         ),
                       ),

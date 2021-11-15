@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:suites/constants/appcolors.dart';
 import 'package:suites/constants/text_styles.dart';
@@ -21,7 +20,7 @@ class HomePageView extends StatelessWidget {
               toolbarHeight: 60,
               elevation: 0,
               backgroundColor: appWhiteColor,
-              iconTheme: const IconThemeData(color: appPrimaryColor),
+              iconTheme: const IconThemeData(color: darkerBlue),
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -37,47 +36,57 @@ class HomePageView extends StatelessWidget {
               ],
             ),
             body: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Luxury Hotels',
-                      style: AppTextStyles.boldBlueText,
-                    ),
-                    Hotels(
-                      hotelimage: 'images/room.jpg',
-                      hotelname: 'Hotel Indigo',
-                      location: 'Airforce Road, Eliozu',
-                      price: '\$110',
-                    ),
-                    Hotels(
-                      hotelimage: 'images/hotel.jpg',
-                      hotelname: 'Golden Tulip',
-                      location: 'Lagos Ibadan Express way',
-                      price: '\$60',
-                    ),
-                    Hotels(
-                      hotelimage: 'images/spa.jpg',
-                      hotelname: 'Eko Hotels',
-                      location: 'Aminu Kano Expressway,Abuja',
-                      price: '\$150',
-                    ),
-                    Hotels(
-                      hotelimage: 'images/hotel.jpg',
-                      hotelname: 'Sheraton Hotels',
-                      location: 'Amen Estate Lekki, Lagos',
-                      price: '\$90',
-                    ),
-                    Hotels(
-                      hotelimage: 'images/spa.jpg',
-                      hotelname: 'Le Meridian',
-                      location: 'Aba Road Port Harcourt',
-                      price: '\$80',
-                    ),
-                  ],
+              margin: const EdgeInsets.only(
+                right: 15,
+                left: 15,
+                bottom: 10,
+              ),
+              child: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overScroll) {
+                  overScroll.disallowIndicator();
+                  return true;
+                },
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Luxury Hotels',
+                        style: AppTextStyles.boldBlueText,
+                      ),
+                      Hotels(
+                        hotelimage: 'images/room.jpg',
+                        hotelname: 'Hotel Indigo',
+                        location: 'Airforce Road, Eliozu',
+                        price: '\$110',
+                      ),
+                      Hotels(
+                        hotelimage: 'images/hotel.jpg',
+                        hotelname: 'Golden Tulip',
+                        location: 'Lagos Ibadan Express way',
+                        price: '\$60',
+                      ),
+                      Hotels(
+                        hotelimage: 'images/spa.jpg',
+                        hotelname: 'Eko Hotels',
+                        location: 'Aminu Kano Expressway,Abuja',
+                        price: '\$150',
+                      ),
+                      Hotels(
+                        hotelimage: 'images/hotel.jpg',
+                        hotelname: 'Sheraton Hotels',
+                        location: 'Amen Estate Lekki, Lagos',
+                        price: '\$90',
+                      ),
+                      Hotels(
+                        hotelimage: 'images/spa.jpg',
+                        hotelname: 'Le Meridian',
+                        location: 'Aba Road Port Harcourt',
+                        price: '\$80',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

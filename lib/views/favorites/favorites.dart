@@ -10,9 +10,9 @@ class FavoritesView extends StatelessWidget {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => SearchViewModel(),
         builder: (context, model, child) {
-          return Scaffold(
+          return const Scaffold(
             body: SafeArea(
-              child: Container(child:const Center(child: Text('Favorites Page'))),
+              child: Center(child: Text('Favorites Page')),
             ),
           );
         });

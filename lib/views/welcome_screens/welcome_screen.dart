@@ -31,7 +31,7 @@ class WelcomeScreenView extends StatelessWidget {
                 PageViewModel(
                     image: Center(
                         child: SvgPicture.asset(
-                      'images/rent.svg',
+                      'images/place.svg',
                     )),
                     title: 'Your comfort our pride',
                     body: 'The best suites are provided for your comfort',
