@@ -19,12 +19,15 @@ class HotelDetailsView extends StatelessWidget {
             floatingActionButton: FloatingActionButton.extended(
               //  extendedPadding: const EdgeInsets.only(left: 30),
               clipBehavior: Clip.hardEdge,
-              label: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: const BookNowButton(
-                    buttonTexts: 'Book Now',
-                    roomPrice: '150\$',
-                  )),
+              label: InkWell(
+                onTap: (){},
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: const BookNowButton(
+                      buttonTexts: 'Book Now',
+                      roomPrice: '150\$',
+                    )),
+              ),
               onPressed: () {},
             ),
             body: Stack(

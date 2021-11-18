@@ -36,7 +36,7 @@ class Hotels extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
-                    image: AssetImage(
+                    image: NetworkImage(
                       '$hotelimage',
                     ),
                     fit: BoxFit.cover)),
@@ -93,12 +93,13 @@ class Hotels extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 15, left: 10),
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>const HotelDetailsView()));
+                                  builder: (context) =>
+                                      const HotelDetailsView()));
                         },
                         child: Container(
                             height: 45,

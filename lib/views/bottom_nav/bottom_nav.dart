@@ -50,7 +50,7 @@ class _BtmNavViewState extends State<BtmNavView> {
   _getPage(int page) {
     switch (page) {
       case 0:
-        return const HomePageView();
+        return  HomePageView();
       case 1:
         return const SearchView();
       case 2:

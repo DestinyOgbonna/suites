@@ -12,6 +12,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
 import '../views/bottom_nav/bottom_nav.dart';
+import '../views/customer_service_chat/customer_chat.dart';
 import '../views/getting_started_screen/getting_started.dart';
 import '../views/hotel_details/hotel_details.dart';
 import '../views/login/login.dart';
@@ -26,6 +27,7 @@ class Routes {
   static const String loginView = '/login-view';
   static const String signUpView = '/sign-up-view';
   static const String btmNavView = '/btm-nav-view';
+  static const String customerChatView = '/customer-chat-view';
   static const String hotelDetailsView = '/hotel-details-view';
   static const all = <String>{
     welcomeScreenView,
@@ -34,6 +36,7 @@ class Routes {
     loginView,
     signUpView,
     btmNavView,
+    customerChatView,
     hotelDetailsView,
   };
 }
@@ -48,6 +51,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.loginView, page: LoginView),
     RouteDef(Routes.signUpView, page: SignUpView),
     RouteDef(Routes.btmNavView, page: BtmNavView),
+    RouteDef(Routes.customerChatView, page: CustomerChatView),
     RouteDef(Routes.hotelDetailsView, page: HotelDetailsView),
   ];
   @override
@@ -89,6 +93,12 @@ class StackedRouter extends RouterBase {
     BtmNavView: (data) {
       return CupertinoPageRoute<dynamic>(
         builder: (context) => const BtmNavView(),
+        settings: data,
+      );
+    },
+    CustomerChatView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => const CustomerChatView(),
         settings: data,
       );
     },

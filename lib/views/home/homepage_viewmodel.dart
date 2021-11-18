@@ -9,4 +9,8 @@ class HomePageViewModel extends BaseViewModel {
   void toLogin() {
     _navigationService.navigateTo(Routes.hotelDetailsView);
   }
+
+  void chatRoom() {
+    _navigationService.navigateTo(Routes.customerChatView);
+  }
 }

@@ -39,15 +39,15 @@ class SearchView extends StatelessWidget {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: Column(
-                  children: [
+                  children: const [
                     CustomTextField(
                       hint: 'Find a Hotel',
-                      prefixicons: const Icon(
+                      prefixicons: Icon(
                         Icons.search,
                         // color: appPrimaryColor,
                       ),
                     ),
-                    const Center(
+                    Center(
                         child: Text('Your Searches will appear here')),
                   ],
                 ),
