@@ -26,6 +26,11 @@ class LoginViewModel extends BaseViewModel {
   void toSignUp() {
     _navigationService.navigateTo(Routes.signUpView);
   }
+  
+  void toRecoverEmail() {
+    _navigationService.navigateTo(Routes.recoveryEmailView);
+  }
+
 
   void loginToApp() async {
     try {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:stacked/stacked.dart';
+import 'package:provider/provider.dart';
 import 'package:suites/constants/appcolors.dart';
 import 'package:suites/constants/text_styles.dart';
 import 'package:suites/views/welcome_screens/welcome_screen_viewmodel.dart';
@@ -11,8 +11,7 @@ class WelcomeScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<WelcomeScreenViewModel>.reactive(
-        viewModelBuilder: () => WelcomeScreenViewModel(),
+    return Consumer<WelcomeScreenViewModel>(
         builder: (context, model, child) {
           return Scaffold(
             body: IntroductionScreen(

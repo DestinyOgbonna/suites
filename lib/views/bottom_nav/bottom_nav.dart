@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:suites/constants/appcolors.dart';
-import 'package:suites/views/bookings/bookings.dart';
 import 'package:suites/views/favorites/favorites.dart';
 import 'package:suites/views/home/homepage.dart';
 import 'package:suites/views/search/search.dart';
@@ -56,7 +55,7 @@ class _BtmNavViewState extends State<BtmNavView> {
       case 2:
         return const FavoritesView();
       case 3:
-        return const BookingsView();
+       // return const BookingsView();
 
       default:
         return const Text('Welcome to Suites');

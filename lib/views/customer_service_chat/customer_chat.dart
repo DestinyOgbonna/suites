@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
+import 'package:provider/provider.dart';
+
 import 'package:suites/views/customer_service_chat/customer_service_chatviewmodel.dart';
 
 class CustomerChatView extends StatelessWidget {
@@ -7,13 +8,10 @@ class CustomerChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CustomerChatViewModel>.reactive(
-        viewModelBuilder: () => CustomerChatViewModel(),
+    return Consumer<CustomerChatViewModel>(
         builder: (context, model, child) {
-          return Scaffold(
-            body: Container(
-              child: Center(child: const Text('Customer Service Chat Room')),
-            ),
+          return const Scaffold(
+            body: Center(child: Text('Customer Service Chat Room')),
           );
         });
   }

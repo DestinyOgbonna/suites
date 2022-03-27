@@ -13,6 +13,8 @@ import 'package:stacked/stacked_annotations.dart';
 
 import '../views/bottom_nav/bottom_nav.dart';
 import '../views/customer_service_chat/customer_chat.dart';
+import '../views/forgot_password/new_password/new_password.dart';
+import '../views/forgot_password/recover_email/recover_email.dart';
 import '../views/getting_started_screen/getting_started.dart';
 import '../views/hotel_details/hotel_details.dart';
 import '../views/login/login.dart';
@@ -29,6 +31,8 @@ class Routes {
   static const String btmNavView = '/btm-nav-view';
   static const String customerChatView = '/customer-chat-view';
   static const String hotelDetailsView = '/hotel-details-view';
+  static const String recoveryEmailView = '/recovery-email-view';
+  static const String newPasswordView = '/new-password-view';
   static const all = <String>{
     welcomeScreenView,
     splashScreenView,
@@ -38,6 +42,8 @@ class Routes {
     btmNavView,
     customerChatView,
     hotelDetailsView,
+    recoveryEmailView,
+    newPasswordView,
   };
 }
 
@@ -53,6 +59,8 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.btmNavView, page: BtmNavView),
     RouteDef(Routes.customerChatView, page: CustomerChatView),
     RouteDef(Routes.hotelDetailsView, page: HotelDetailsView),
+    RouteDef(Routes.recoveryEmailView, page: RecoveryEmailView),
+    RouteDef(Routes.newPasswordView, page: NewPasswordView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -105,6 +113,18 @@ class StackedRouter extends RouterBase {
     HotelDetailsView: (data) {
       return CupertinoPageRoute<dynamic>(
         builder: (context) => const HotelDetailsView(),
+        settings: data,
+      );
+    },
+    RecoveryEmailView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => const RecoveryEmailView(),
+        settings: data,
+      );
+    },
+    NewPasswordView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => const NewPasswordView(),
         settings: data,
       );
     },

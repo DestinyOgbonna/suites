@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
+import 'package:provider/provider.dart';
 import 'package:suites/constants/appcolors.dart';
 import 'package:suites/constants/text_styles.dart';
 import 'package:suites/views/hotel_details/hotel_details_viewmodel.dart';
@@ -12,8 +12,7 @@ class HotelDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HotelDetailsViewModel>.reactive(
-        viewModelBuilder: () => HotelDetailsViewModel(),
+    return Consumer<HotelDetailsViewModel>(
         builder: (context, model, child) {
           return Scaffold(
             floatingActionButton: FloatingActionButton.extended(

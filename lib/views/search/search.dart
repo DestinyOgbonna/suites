@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:suites/constants/appcolors.dart';
+import 'package:suites/constants/text_styles.dart';
+import 'package:suites/views/appbar/appbar.dart';
 import 'package:suites/widgets/custom_textfield.dart';
 import 'package:suites/views/search/search_viewmodel.dart';
+import 'package:suites/widgets/drawer.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -13,42 +16,30 @@ class SearchView extends StatelessWidget {
         viewModelBuilder: () => SearchViewModel(),
         builder: (context, model, child) {
           return Scaffold(
-            drawer: (ListView()),
+            drawer: (const CustomDrawer()),
             backgroundColor: appWhiteColor,
-            appBar: AppBar(
-              toolbarHeight: 60,
-              elevation: 0,
-              backgroundColor: appWhiteColor,
-              iconTheme: const IconThemeData(color: appPrimaryColor),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundColor: appWhiteColor,
-                    radius: 30,
-                    child: Image.asset(
-                      'images/gamer.png',
-                      height: 50,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            appBar: const PreferredSize(
+                preferredSize: Size.fromHeight(50), child: CustomAppBar()),
             body: SafeArea(
               child: Container(
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: Column(
-                  children: const [
-                    CustomTextField(
+                  children: [
+                    const CustomTextField(
                       hint: 'Find a Hotel',
                       prefixicons: Icon(
                         Icons.search,
-                        // color: appPrimaryColor,
                       ),
                     ),
+                    const SizedBox(
+                      height: 40,
+                    ),
                     Center(
-                        child: Text('Your Searches will appear here')),
+                        child: Text(
+                      'Your Searches Will Appear Here',
+                      style: AppTextStyles.blackText,
+                    )),
                   ],
                 ),
               ),

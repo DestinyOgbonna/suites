@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked/stacked_annotations.dart';
-
+import 'package:provider/provider.dart';
 import 'package:suites/constants/appcolors.dart';
 import 'package:suites/validation/validations.dart';
 import 'package:suites/widgets/custom_textfield.dart';
@@ -11,11 +9,10 @@ import 'package:suites/views/login/login_viewmodel.dart';
 import 'package:suites/widgets/custom_button.dart';
 
 class LoginView extends StatelessWidget {
-  LoginView({Key? key}) : super(key: key);
+  const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<LoginViewModel>.reactive(
-        viewModelBuilder: () => LoginViewModel(),
+    return Consumer<LoginViewModel>(
         builder: (context, model, child) {
           return Scaffold(
               resizeToAvoidBottomInset: false,
@@ -59,10 +56,10 @@ class LoginView extends StatelessWidget {
                                   child: CustomTextField(
                                     controller: model.emailController,
                                     hint: 'E-mail',
-                                    onChange: (val){},
+                                    onChange: (val) {},
                                     validateFunction: Validations.validateEmail,
                                     // label: 'Enter user name',
-                                    prefixicons: Icon(Icons.email_outlined),
+                                    prefixicons: const Icon(Icons.email_outlined),
                                   ),
                                 ),
                                 const SizedBox(
@@ -72,13 +69,14 @@ class LoginView extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 18.0),
                                   child: CustomTextField(
                                     onChange: (val) {},
-                                    validateFunction: Validations.validatePassword,
+                                    validateFunction:
+                                        Validations.validatePassword,
                                     controller: model.passwordController,
                                     hint: 'Password',
                                     obscure: true,
                                     // label: 'Enter user name',
-                                    prefixicons: Icon(Icons.lock_outline),
-                                    suffixicons: Icon(Icons.visibility_off),
+                                    prefixicons: const Icon(Icons.lock_outline),
+                                    suffixicons: const Icon(Icons.visibility_off),
                                   ),
                                 ),
                                 Padding(
@@ -86,8 +84,10 @@ class LoginView extends StatelessWidget {
                                   child: Align(
                                       alignment: Alignment.topRight,
                                       child: InkWell(
-                                        onTap: () {},
-                                        child: Text('Forgot Password?',
+                                        onTap: () {
+                                          model.toRecoverEmail();
+                                        },
+                                        child: Text('Forgot Password.',
                                             style: AppTextStyles.smallblueText),
                                       )),
                                 ),

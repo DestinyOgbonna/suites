@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:suites/app/app.locator.dart';
 import 'package:suites/app/app.logger.dart';
-import 'package:suites/services/snack_bar_service.dart';
 
 class FireAuthService {
   final log = getLogger('Firebase Auth');
@@ -34,14 +33,18 @@ class FireAuthService {
     }
   }
 
-   Future<UserCredential>? login(String? email, String? password) {
+  Future<UserCredential>? login(String? email, String? password) {
     try {
-      final newUSer =
-          _firebaseAuth!.signInWithEmailAndPassword(email: email!, password: password!);
+      final newUSer = _firebaseAuth!
+          .signInWithEmailAndPassword(email: email!, password: password!);
       return newUSer;
     } catch (e) {
       throw Failure(message: e.toString());
     }
+  }
+
+  signOut() {
+    _firebaseAuth!.signOut();
   }
 }
 

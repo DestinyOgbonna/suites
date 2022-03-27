@@ -6,14 +6,13 @@ import 'package:suites/app/app.locator.dart';
 import 'package:suites/constants/appcolors.dart';
 import 'package:suites/services/dialog_service.dart';
 import 'package:suites/views/welcome_screens/welcome_screen.dart';
-
 import 'app/app.router.dart';
 import 'services/firebase_auth.dart';
 import 'services/snack_bar_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   setupLocator();
   setupDialogUi();
   AppSnackBar.setupSnackBarUi();
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-final _authservice = locator<FireAuthService>();
+    final _authservice = locator<FireAuthService>();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

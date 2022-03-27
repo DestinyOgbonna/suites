@@ -75,10 +75,7 @@ class SignUpViewModel extends BaseViewModel {
     }
   }
 
-  @override
-  void setFormStatus() {
-    // TODO: implement setFormStatus
-  }
+ 
 
   toSignIn() {
     _navigationService.navigateTo(Routes.loginView);
